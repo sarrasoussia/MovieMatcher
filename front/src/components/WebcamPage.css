@@ -1,0 +1,40 @@
+.webcamContainer {
+    padding: 5%;
+  }
+  
+  .heading {
+    color: white;
+  }
+  
+  .webcamWrapper {
+    width: 50%;
+    margin: auto;
+  }
+  
+  .webcam {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .resultDiv {
+    margin-top: 20px;
+    color: beige;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: larger;
+  }
+
+  .resultDiv button{
+    background-color: rgb(19, 19, 58);
+    color: white;
+    border-radius: 15px;
+    border: 2px solid rgb(102, 102, 103);
+  }
+  
+  .resultDiv .emotion{
+    color: rgb(208, 6, 6);
+    margin-left: 5px;
+    font-size: larger;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.445);
+  }
+  

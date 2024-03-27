@@ -22,6 +22,9 @@ class Header extends Component {
                                 <Link className="nav-link text-white" to="/profile">Profile</Link>
                             </li>
                             <li className="nav-item">
+                                <Link className="nav-link text-white" to="/webcam">Features</Link>
+                            </li>
+                            <li className="nav-item">
                                 <Link className="nav-link text-white" to="/profile">
                                     <img
                                         src="https://cdn-icons-png.flaticon.com/128/9068/9068842.png"
