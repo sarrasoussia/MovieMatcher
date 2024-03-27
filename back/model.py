@@ -1,3 +1,8 @@
+# pip install flask
+# pip install flask-cross
+# pip install deepface
+# pip install opencv-python
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from deepface import DeepFace
