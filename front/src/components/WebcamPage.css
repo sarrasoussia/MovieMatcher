@@ -1,40 +1,69 @@
-.webcamContainer {
-    padding: 5%;
-  }
-  
-  .heading {
-    color: white;
-  }
-  
-  .webcamWrapper {
-    width: 50%;
-    margin: auto;
-  }
-  
-  .webcam {
-    width: 100%;
-    border-radius: 10px;
-  }
-  
-  .resultDiv {
-    margin-top: 20px;
-    color: beige;
-    display: flex;
-    justify-content: space-evenly;
-    font-size: larger;
-  }
+.pageContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 8%
+}
 
-  .resultDiv button{
-    background-color: rgb(19, 19, 58);
-    color: white;
-    border-radius: 15px;
-    border: 2px solid rgb(102, 102, 103);
-  }
-  
-  .resultDiv .emotion{
-    color: rgb(208, 6, 6);
-    margin-left: 5px;
-    font-size: larger;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.445);
-  }
-  
+.leftContainer {
+  width: 50%;
+}
+
+.rightContainer {
+  width: 50%;
+  display: block;
+  justify-content: center;
+}
+
+.webcamContainer {
+  padding: 5%;
+}
+
+.heading {
+  color: white;
+  text-shadow: 2px 2px 4px rgb(255, 47, 0);
+  margin-left: 20px;
+}
+
+.webcamWrapper {
+  width: 100%;
+}
+
+.webcam {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.captureButton {
+  background-color: rgba(24, 25, 51, 0.977);
+  color: white;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid rgb(202, 202, 203);
+}
+
+.resultEmotion {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-evenly;
+  font-size: larger;
+}
+
+.emotion {
+  color: rgb(255, 0, 0);
+  margin-left: 5px;
+  font-size: larger;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.445);
+}
+
+.resultMovie {
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.277);
+  color: rgb(255, 255, 255);
+  padding: 5%;
+  font-size: larger;
+  background-color: rgba(255, 255, 255, 0.142);
+}

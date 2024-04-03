@@ -9,7 +9,12 @@ class About extends Component{
                    
                     <div className="container-fluid card" style={{width:"60%"}}>
                         <div className="embed-responsive embed-responsive-16by9">
-                            <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/tgbNymZ7vqY" allowFullScreen ></iframe>
+                            <iframe className="embed-responsive-item" 
+                                    src="https://www.youtube.com/embed/tgbNymZ7vqY"   
+                                    title="YouTube video player" 
+                                    allowFullScreen 
+                            />
+                                    
                         </div>
                     </div>
 

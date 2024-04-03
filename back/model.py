@@ -1,16 +1,9 @@
-from flask import Flask, request, jsonify, redirect
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from deepface import DeepFace
 import cv2
 import base64
 import numpy as np
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
-from bson.json_util import dumps
-from pymongo import MongoClient
-from datetime import timedelta
 
 app = Flask(__name__)
 CORS(app)
@@ -114,7 +107,7 @@ def user_info():
 
 
 @app.route("/detect_emotion", methods=["POST"])
-@cross_origin()
+@cross_origin()  # Enable CORS for this route
 def detect_emotion():
     try:
 
