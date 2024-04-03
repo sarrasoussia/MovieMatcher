@@ -6,7 +6,6 @@ import './WebcamPage.css';
 const WebcamPage = () => {
   const [emotion, setEmotion] = useState(null);
   const webcamRef = useRef(null);
-
   const capture = async () => {
     const imageSrc = webcamRef.current.getScreenshot();
 

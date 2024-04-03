@@ -5,6 +5,7 @@
     margin-right: 2%;
     border: 10px solid transparent;
     border-radius: 20px;
+    margin-top: 20px;
 }
 .profcontainer{
     margin-left: 6%;
@@ -14,8 +15,8 @@
     width: 80%;
 }
 .profilpic{
-    width: 11%;
-    height: 11%;
+    /* width: 13%;
+    height: 13%; */
     border-radius: 50%;
     overflow: hidden;
    

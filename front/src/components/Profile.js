@@ -5,6 +5,7 @@ import EditProfil from "./EditProfil";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlinePhone } from "react-icons/md";
+import axios from "axios";
 
 import "./Profile.css";
 
@@ -13,18 +14,39 @@ class Profile extends Component {
     super();
     this.state = {
       movies,
-      name: "ala",
-      mail: "bhiriala577@gmail.com",
-      phone: "25763502"
+      name: "",
+      email: "",
+      phone: "",
+      image:""
     };
     this.mapping = this.mapping.bind(this);
   }
 
+  async componentDidMount() {
+    try {
+      const yourAccessToken = sessionStorage.getItem("token");
+      // console.log(yourAccessToken)
+      const response = await axios.get("http://localhost:5000/user_info", {
+        headers: {
+          Authorization: `Bearer ${yourAccessToken}`
+        }
+      });
+      console.log(response.data)
+      const { name, email, phone,image } = response.data[0];
+      this.setState({ name, email, phone,image });
+    } catch (error) {
+      console.error("Error fetching user info:", error);
+    }
+  }
+  
+  
+
   handleSaveChanges = (updatedInfo) => {
     this.setState({
       name: updatedInfo.name,
-      mail: updatedInfo.mail,
-      phone: updatedInfo.phone
+      email: updatedInfo.mail,
+      phone: updatedInfo.phone,
+      image: updatedInfo.image
     });
   };
 
@@ -53,23 +75,23 @@ class Profile extends Component {
         <div className="profile-text">
           <p className="text-white text-center display-1 py-3" style={{ fontFamily: "cinematic", fontSize: "400%" }}>
             <span style={{ color: "rgb(97, 75, 49)" }}> Welcome to your profile</span>{" "}
-            <span style={{ color: "rgb(195, 58, 58)" }}> markita</span>
+            <span style={{ color: "rgb(195, 58, 58)" }}>{this.state.name}</span>
           </p>
         </div>
 
         <div className="profcontainer">
-          <img alt="" className="profilpic" src="images/profilpic2.png" ></img>
+          <img alt="" className="profilpic" height={135} width={135} src={this.state.image} ></img>
         </div>
         <EditProfil
           name={this.state.name}
-          mail={this.state.mail}
+          mail={this.state.email}
           phone={this.state.phone}
           onSaveChanges={this.handleSaveChanges}
         />
         <div className="personalinfo">
           <em style={{ color: "whitesmoke", fontWeight: "800", fontSize: "20px" }}> Personal <em style={{ color: "#ec6090" }}>Info</em></em>
           <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><FaRegUser style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.name}</p>
-          <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><MdOutlineMailOutline style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.mail}</p>
+          <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><MdOutlineMailOutline style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.email}</p>
           <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><MdOutlinePhone style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.phone} </p>
 
         </div>
@@ -91,5 +113,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-
-
