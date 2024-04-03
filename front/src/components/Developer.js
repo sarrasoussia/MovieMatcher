@@ -9,6 +9,7 @@ class Developer extends Component{
             <img 
                 src={this.props.image} 
                 class="card-img-top"
+                alt="developer identity"
             />
             <div class="card-body">
               <h5 class="card-title">{this.props.name}</h5>
