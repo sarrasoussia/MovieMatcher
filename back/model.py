@@ -84,7 +84,7 @@ def login():
         return jsonify(access_token=access_token), 200
 
     else:
-        return jsonify({"msg": "ce copmte n'existe pas"}), 401
+        return jsonify({"msg": "ce compte n'existe pas"}), 401
 
 
 @app.route("/editprofil", methods=["PUT"])
