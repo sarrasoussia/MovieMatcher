@@ -25,7 +25,12 @@ function Login() {
                 alert("Bad username or password");
             }
         } catch (error) {
-            console.error('Error:', error);
+            if (error.response && error.response.status === 401) {
+                console.error('Error:', error);
+                alert("ce copmte n'existe pas");
+            }else {
+                console.error('Error:', error);
+            }
         }
     }
 

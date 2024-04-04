@@ -6,7 +6,6 @@ import './WebcamPage.css';
 const WebcamPage = () => {
   const [emotion, setEmotion] = useState(null);
   const [movieDetails, setMovieDetails] = useState(null);
-  const [setError] = useState(null);
   const webcamRef = useRef(null);
   const capture = async () => {
     if (!webcamRef.current) {

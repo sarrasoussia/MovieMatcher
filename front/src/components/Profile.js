@@ -5,6 +5,8 @@ import EditProfil from "./EditProfil";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlinePhone } from "react-icons/md";
+import { BiLogOut } from "react-icons/bi";
+import { Navigate} from "react-router-dom";
 import axios from "axios";
 
 import "./Profile.css";
@@ -17,7 +19,8 @@ class Profile extends Component {
       name: "",
       email: "",
       phone: "",
-      image:""
+      image:"",
+      redirect:false
     };
     this.mapping = this.mapping.bind(this);
   }
@@ -49,6 +52,10 @@ class Profile extends Component {
       image: updatedInfo.image
     });
   };
+  logout = () => {
+    sessionStorage.removeItem("token");
+    this.setState({ redirect: true });
+}
 
   mapping(x) {
     const movies = x.map((movie) => (
@@ -66,6 +73,9 @@ class Profile extends Component {
 
   render() {
     const movielist = this.mapping(this.state.movies);
+    if (this.state.redirect) {
+      return <Navigate to="/login" />;
+  }
     return (
       <div
         style={{ background: "linear-gradient(to top, rgb(4, 4, 4), rgba(36, 34, 34, 0.937))" }}
@@ -88,6 +98,7 @@ class Profile extends Component {
           phone={this.state.phone}
           onSaveChanges={this.handleSaveChanges}
         />
+        <button onClick={this.logout} type="button" className="btn btn-outline-secondary" style={{ width: '40%', marginLeft: '28%', marginTop: '20px' }}>Logout<span><BiLogOut style={{fontSize: "24px",marginLeft:"8px"}} /></span></button>
         <div className="personalinfo">
           <em style={{ color: "whitesmoke", fontWeight: "800", fontSize: "20px" }}> Personal <em style={{ color: "#ec6090" }}>Info</em></em>
           <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><FaRegUser style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.name}</p>

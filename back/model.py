@@ -17,16 +17,54 @@ from bson.json_util import dumps
 from pymongo import MongoClient
 from datetime import timedelta
 import pandas as pd
+import re
 
 app = Flask(__name__)
 CORS(app)
 client = MongoClient("localhost", 27017)
 db = client.moviematcher
 users = db.users
-
-
 app.config["JWT_SECRET_KEY"] = "skjdfbnbsrkjgb14541616"
 jwt = JWTManager(app)
+
+
+@app.route("/signup", methods=["POST"])
+def signup():
+    email = request.json["email"]
+    name = request.json["name"]
+    phone = request.json["phone"]
+    password = request.json["password"]
+    image = request.json["image"]
+
+    if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+        return jsonify({"msg": "Format d'email invalide"}), 401
+
+    existing_email = users.find_one({"email": email})
+    if existing_email is not None:
+        return jsonify({"msg": "Email déjà utilisé par un autre utilisateur"}), 402
+    if not phone.isdigit():
+        return (
+            jsonify(
+                {"msg": "Le numéro de téléphone doit contenir uniquement des chiffres"}
+            ),
+            403,
+        )
+    existing_password = users.find_one({"password": password})
+    if existing_password is not None:
+        return (
+            jsonify({"msg": "Mot de passe déjà utilisé par un autre utilisateur"}),
+            404,
+        )
+    users.insert_one(
+        {
+            "name": name,
+            "phone": phone,
+            "email": email,
+            "password": password,
+            "image": image,
+        }
+    )
+    return jsonify({"msg": "Profil mis à jour avec succès"}), 200
 
 
 # @jwt.expired_token_loader
@@ -46,26 +84,7 @@ def login():
         return jsonify(access_token=access_token), 200
 
     else:
-        return jsonify({"msg": "Bad username or password hhhhhhhhhhhhhHHHHH"}), 401
-
-
-@app.route("/signup", methods=["POST"])
-def signup():
-    email = request.json["email"]
-    name = request.json["name"]
-    phone = request.json["phone"]
-    password = request.json["password"]
-    image = request.json["image"]
-    users.insert_one(
-        {
-            "name": name,
-            "phone": phone,
-            "email": email,
-            "password": password,
-            "image": image,
-        }
-    )
-    return jsonify({"msg": "Profile updated successfully"}), 200
+        return jsonify({"msg": "ce cpmte n'existe pas"}), 401
 
 
 @app.route("/editprofil", methods=["PUT"])
@@ -81,13 +100,6 @@ def editprofil():
         {"$set": {"name": name, "phone": phone, "email": email, "image": image}},
     )
     return jsonify({"msg": "Profile updated successfully"}), 200
-
-    # user_info_cursor = users.find({"password": current_user_password})
-    # user_info = list(user_info_cursor)
-    # if user_info:
-    #     return dumps(user_info), 200
-    # else:
-    #     return jsonify({"msg": "User not found"}), 404
 
 
 @app.route("/user_info", methods=["GET"])

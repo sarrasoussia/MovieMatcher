@@ -15,9 +15,7 @@ function Signup() {
         var reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
         reader.onload = () => {
-            console.log(reader.result);
             setImage(reader.result);
-            console.log(reader.result)
         };
         reader.onerror = error => {
             console.log("Error: ", error);
@@ -28,13 +26,28 @@ function Signup() {
         try {
             const response = await axios.post('http://localhost:5000/signup', { image, name, email, phone, password });
             if (response.status === 200) {
+                alert("account created successfully");
                 console.log("account created successfully");
                 setRedirect(true);
             } else {
                 alert("creation failed");
             }
         } catch (error) {
-            console.error('Error:', error);
+            if (error.response && error.response.status === 401) {
+                console.error('Error:', error);
+                alert("Format d'email invalide");
+            }else if(error.response && error.response.status === 402){
+                console.error('Error:', error);
+                alert("Email déjà utilisé par un autre utilisateur");
+            }else if(error.response && error.response.status === 403){
+                console.error('Error:', error);
+                alert("Le numéro de téléphone doit contenir uniquement des chiffres");
+            }else if(error.response && error.response.status === 404){
+                console.error('Error:', error);
+                alert("Mot de passe déjà utilisé par un autre utilisateur");
+            }else {
+                console.error('Error:', error);
+            }
         }
     }
     

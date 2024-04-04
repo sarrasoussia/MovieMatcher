@@ -12,9 +12,7 @@ function EditProfil(props) {
     var reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () => {
-        console.log(reader.result);
         setImage(reader.result);
-        console.log(reader.result)
     };
     reader.onerror = error => {
         console.log("Error: ", error);
@@ -66,7 +64,7 @@ function EditProfil(props) {
 
   return (
     <div>
-      <button onClick={handleButtonClick} type="button" className="btn btn-outline-secondary" style={{ width: '60%', marginLeft: '20%', marginTop: '20px' }}>Edit Profile</button>
+      <button onClick={handleButtonClick} type="button" className="btn btn-outline-secondary" style={{ width: '40%', marginLeft: '28%', marginTop: '8px' }}>Edit Profile</button>
 
       {showModal && (
         <div className="modal overlay" tabIndex="-1" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
