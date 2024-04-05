@@ -1,11 +1,14 @@
 import React, { useState }  from 'react';
 import { Link, json } from "react-router-dom";
 import './Features.css'
+import axios from 'axios';
+import FeatureCard from "./FeatureCard";
 import { formToJSON } from 'axios';
 
 const Features = () => {
 
     const [rolling, setRolling] = useState(false);
+    const [movieDetails,setMovieDetails] = useState(null);
 
     const rollDice = () => {
       setRolling(true);
@@ -13,66 +16,50 @@ const Features = () => {
         setRolling(false);
       }, 1000); // 2 seconds
     };
-  
-    const [movieDetails] = useState(null);
 
-    const sendPostRequest = (emotion) => {
-        console.log(typeof(emotion))
-        JSON.stringify({"emotion":emotion})
-        console.log(typeof(({"emotion":emotion})))
-
-        fetch("/recommend_movies", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: ( {"emotion":emotion} )
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok", emotion);
-            }
-            return response.json();
-        })
-        .then(movieDetails => {
-            // Handle movie details
+    const sendPostRequest = async (emotion) => {
+        try {
+            console.log(emotion);
+            const response = await axios.post("http://localhost:5000/recommend_movies", {emotion}, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const movieDetails = response.data;
             console.log(movieDetails);
             // Example: Update state with movieDetails
-            // setMovieDetails(movieDetails);
-        })
-        .catch(error => {
+            setMovieDetails(movieDetails);
+        } catch (error) {
             // Handle errors
             console.error("Error:", error);
-        });
-    }
-    
-    
-    // const displayMovieDetails = (movieDetails) => {
-    //     // Update UI with movie details
-    //     const movieTitleElement = document.getElementById("movieTitle");
-    //     const movieDescriptionElement = document.getElementById("movieDescription");
-    
-    //     movieTitleElement.textContent = movieDetails.title;
-    //     movieDescriptionElement.textContent = movieDetails.description;
-    // }
+        }
+    };
     
     
       
 
     return (
         <div className='mainContainer '>
+          
             <div className='leftContainer '>
-                <h2 id="movieTitle">{movieDetails && movieDetails.title}</h2>
-                <p id="movieDescription">{movieDetails && movieDetails.description}</p>
+                {movieDetails && ( <FeatureCard
+                        shortsummary={movieDetails['Short Summary']}
+                        title={movieDetails.Title}
+                        rate={movieDetails.Rating}
+                    />
+                    /* <h2 style={{color:"white"}} id="movieTitle">{movieDetails.Title}</h2>
+                    <p style={{color:"white"}} id="movieDescription">{movieDetails.Summary}</p> */
+                )}
             </div>
+        
 
             <div className='rightContainer'>
                 <div className='category'>
                     <h2 className='moodCategoryTitle'> What's your mood ?</h2>
                     <div className='moodCategory'>
-                        <button onClick={() => sendPostRequest("happy")}><img src='images/happy.png' alt='happy' /> </button> 
-                        <button onClick={() => sendPostRequest("sad")}><img src='images/sad.png' alt='sad'/></button>
-                        <button onClick={() => sendPostRequest("neutral")}><img src='images/angry.png' alt='angry'/></button>
+                        <button onClick={() => sendPostRequest("happy")}><img  style={{width:"80%",height:"80%"}} src='images/happy.png' alt='happy' /> </button> 
+                        <button onClick={() => sendPostRequest("sad")}><img style={{width:"80%",height:"80%"}} src='images/sad.png' alt='sad'/></button>
+                        <button onClick={() => sendPostRequest("neutral")}><img style={{width:"80%",height:"80%"}} src='images/angry.png' alt='angry'/></button>
                         {/* <button onClick={() => sendPostRequest({"emotion":"neutral"})}><img src='images/neutral.png' alt='neutral' /></button>
                         <button onClick={() => sendPostRequest({"emotion":"neutral"})}><img src='images/lonely.png' alt='lonely'/></button> */}
                     </div> 

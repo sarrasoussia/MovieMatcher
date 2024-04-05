@@ -1,11 +1,14 @@
 import React, { useState, useRef } from 'react';
 import Webcam from 'react-webcam';
 import axios from 'axios';
+import { GrFavorite } from "react-icons/gr";
+import { MdOutlineFavorite } from "react-icons/md";
 import './WebcamPage.css';
 
 const WebcamPage = () => {
   const [emotion, setEmotion] = useState(null);
   const [movieDetails, setMovieDetails] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
   const webcamRef = useRef(null);
   const capture = async () => {
     if (!webcamRef.current) {
@@ -30,6 +33,49 @@ const WebcamPage = () => {
       console.error('Error:', error);
     }
   };
+  const favoris = async () =>{
+    try {
+      const yourAccessToken = sessionStorage.getItem('token');
+      console.log(movieDetails)
+      const response = await axios.put('http://localhost:5000/favoris', {
+        title:movieDetails.Title,
+        rate:movieDetails.Rating,
+        Shortsummary:movieDetails['Short Summary']
+      }, {
+        headers: {
+          Authorization: `Bearer ${yourAccessToken}`
+        }
+      });
+      if (response.status === 200) {
+        setIsFavorite(true);
+        console.log("The movie has been added successfully. Don't forget to watch it later:)");
+      } else {
+        alert('add to favorites failed');
+      }
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
+  }
+
+  const RemoveFromFavorites = async () => {
+    try {
+        const yourAccessToken = sessionStorage.getItem('token');
+        const response = await axios.delete('http://localhost:5000/removefromfavoris', {
+            headers: {
+                Authorization: `Bearer ${yourAccessToken}`
+            },
+            data: { title:movieDetails.Title }
+        });
+        if (response.status === 200) {
+          console.log("The movie has been removed successfully.");
+            setIsFavorite(false);
+        } else {
+            alert('remove from favorites failed');
+        }
+    } catch (error) {
+        console.error('Error fetching user info:', error);
+    }
+  }
 
   const MovieDetails = ({ movieDetails }) => {
     return (
@@ -40,7 +86,9 @@ const WebcamPage = () => {
         <p>Short Summary: {movieDetails['Short Summary']}</p>
         <p>Runtime: {movieDetails.Runtime}</p>
         <p>Rating: {movieDetails.Rating}</p>
-        <img src={movieDetails['Movie Poster']} alt={movieDetails.Title} />
+        {/* <img src={movieDetails['Movie Poster']} alt={movieDetails.Title} /> */}
+        <p>Add to favorites: <button onClick={isFavorite ? RemoveFromFavorites : favoris} type="button" className="btn btn-outline-secondary" style={{ borderColor:"transparent",transform:"translate(0px,-3px)" }}>
+           {isFavorite ? <MdOutlineFavorite style={{fontSize: "32px"}}/> : <GrFavorite style={{fontSize: "30px"}}/>}</button></p>                       
       </div>
     );
   };
