@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Webcam from 'react-webcam';
 import axios from 'axios';
+import { GrFavorite } from "react-icons/gr";
 import './WebcamPage.css';
 
 const WebcamPage = () => {
@@ -32,6 +33,28 @@ const WebcamPage = () => {
       // setError(error.message);
     }
   };
+  const favoris = async () =>{
+    try {
+      const yourAccessToken = sessionStorage.getItem('token');
+      console.log(movieDetails)
+      const response = await axios.put('http://localhost:5000/favoris', {
+        title:movieDetails.Title,
+        rate:movieDetails.Rating,
+        Shortsummary:movieDetails['Short Summary']
+      }, {
+        headers: {
+          Authorization: `Bearer ${yourAccessToken}`
+        }
+      });
+      if (response.status === 200) {
+        alert("The movie has been added successfully. Don't forget to watch it later:)");
+      } else {
+        alert('add to favorites failed');
+      }
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
+  }
 
   const MovieDetails = ({ movieDetails }) => {
     return (
@@ -42,7 +65,8 @@ const WebcamPage = () => {
         <p>Short Summary: {movieDetails['Short Summary']}</p>
         <p>Runtime: {movieDetails.Runtime}</p>
         <p>Rating: {movieDetails.Rating}</p>
-        <img src={movieDetails['Movie Poster']} alt={movieDetails.Title} />
+        {/* <img src={movieDetails['Movie Poster']} alt={movieDetails.Title} /> */}
+        <p>Add to favorites: <button onClick={favoris} type="button" className="btn btn-outline-secondary" style={{ borderColor:"transparent" }}><GrFavorite style={{fontSize: "30px"}}/></button></p>
       </div>
     );
   };

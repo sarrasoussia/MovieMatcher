@@ -35,6 +35,7 @@ def signup():
     phone = request.json["phone"]
     password = request.json["password"]
     image = request.json["image"]
+    favorite_movies = []
 
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
         return jsonify({"msg": "Format d'email invalide"}), 401
@@ -62,6 +63,7 @@ def signup():
             "email": email,
             "password": password,
             "image": image,
+            "favorite_movies": favorite_movies,
         }
     )
     return jsonify({"msg": "Profil mis à jour avec succès"}), 200
@@ -100,6 +102,53 @@ def editprofil():
         {"$set": {"name": name, "phone": phone, "email": email, "image": image}},
     )
     return jsonify({"msg": "Profile updated successfully"}), 200
+
+
+@app.route("/favoris", methods=["PUT"])
+@jwt_required()
+def favoris():
+    try:
+        title = request.json["title"]
+        rate = request.json["rate"]
+        Shortsummary = request.json["Shortsummary"]
+        current_user_password = get_jwt_identity()
+        user = users.find_one({"password": current_user_password})
+        favorite_movies = user.get("favorite_movies", [])
+        new_favorite_movie = {
+            "title": title,
+            "rate": rate,
+            "Short Summary": Shortsummary,
+        }
+        favorite_movies.append(new_favorite_movie)
+
+        users.update_one(
+            {"password": current_user_password},
+            {"$set": {"favorite_movies": favorite_movies}},
+        )
+
+        return jsonify({"msg": "Favorites updated successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+
+@app.route("/removefromfavoris", methods=["DELETE"])
+@jwt_required()
+def removefromfavoris():
+    try:
+        title = request.json["title"]
+        current_user_password = get_jwt_identity()
+        user = users.find_one({"password": current_user_password})
+        favorite_movies = user.get("favorite_movies", [])
+        updated_favorite_movies = [
+            movie for movie in favorite_movies if movie.get("title") != title
+        ]
+        users.update_one(
+            {"password": current_user_password},
+            {"$set": {"favorite_movies": updated_favorite_movies}},
+        )
+        return jsonify({"msg": f"Movie with title {title} removed from favorites"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
 
 @app.route("/user_info", methods=["GET"])
