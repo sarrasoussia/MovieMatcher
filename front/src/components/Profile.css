@@ -1,39 +1,95 @@
-.coverimg {
-    width: 95%;
-    height: 400px; /* Ajustez la hauteur selon vos besoins */
-    margin-left: 2%;
-    margin-right: 2%;
-    border: 10px solid transparent;
-    border-radius: 20px;
-    margin-top: 23px;
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    background-color: black;
 }
-.profcontainer{
-    margin-left: 6%;
-    margin-top: -5%;
-    margin-bottom: 45px;
-    height: 80%;
-    width: 80%;
+
+.cover {
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
 }
-.profilpic{
-    /* width: 13%;
-    height: 13%; */
+
+.welcome {
+    margin: 90px;
+    font-size: 5vw;
+}
+
+@media screen and (max-width: 768px) {
+    .welcome {
+        font-size: 8vw; 
+    }
+}
+
+.underCover{
+    max-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profcontainer {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow: hidden;
-   
+    background-size: cover;
+    background-position: center; 
+  }
+
+  .editButton {
+    font-weight: 600;
+    background-color: #ffffff; 
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    width: 200px;
 }
 
-.position-relative {
-    position: relative;
+.logoutButton {
+    font-weight: 600;
+    background-color: #b3291ff0; 
+    border-radius: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.profile-text {
-    position: absolute;
-    top: 11%;
-    left: 50%;
-    transform: translateX(-50%);
+.dataContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+}
+
+.personalinfo {
+    width: 45%; 
+    max-width: 300px; 
+
+}
+
+.moviesContainer {
+    margin-top: -100px;
     width: 100%;
+}
+
+.secondcontainer {
     text-align: center;
 }
+
 .secondcontainer {
     max-width: 63% ;
     min-height: 600px;
@@ -57,16 +113,5 @@
 .secondcontainer::-webkit-scrollbar-track {
     background-color: transparent;
 }
-.personalinfo {
-  margin-top:60px;
-  margin-left: 4%;
-  transform: translateY(8%);
-}
-.moviescontainer{
-    transform: translateY(-26%);
-}
 
-/* .text{
-   position:absolute;
-    z-index: 1000;
-} */
+

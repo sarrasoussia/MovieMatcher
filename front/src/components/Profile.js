@@ -79,48 +79,55 @@ class Profile extends Component {
       return <Navigate to="/login" />;
   }
     return (
-      <div
-      style={{ background: "linear-gradient(to top, rgb(4, 4, 4), rgba(36, 34, 34, 0.937))" }}
-      className="container-fluid py-5 position-relative"
-    >
-      <img alt="" className="coverimg" src="images/coverimg.png" />
-      <div className="profile-text">
-        <p className="text-white text-center display-1 py-3" style={{ fontFamily: "cinematic", fontSize: "400%" }}>
-          <span style={{ color: "rgb(97, 75, 49)" }}> Welcome to your profile</span>{" "}
+  <div className="mainContainer">
+
+      <div className="cover" style={{backgroundImage: `url(images/coverimg.png)`}}>
+        <p className="welcome text-center" style={{ fontFamily: "cinematic"}}>
+          <span style={{ color: "rgb(97, 75, 49)" }}> Welcome to your profile </span>
           <span style={{ color: "rgb(195, 58, 58)" }}>{this.state.name}</span>
         </p>
       </div>
 
-      <div className="profcontainer">
-        <img alt="" className="profilpic" height={135} width={135} src={this.state.image} ></img>
-      </div>
-      <EditProfil
-        name={this.state.name}
-        mail={this.state.email}
-        phone={this.state.phone}
-        onSaveChanges={this.handleSaveChanges}
-      />
-      <button onClick={this.logout} type="button" className="btn btn-outline-secondary" style={{ width: '40%', marginLeft: '28%', marginTop: '20px' }}>Logout<span><BiLogOut style={{fontSize: "24px",marginLeft:"8px"}} /></span></button>
-      <div className="personalinfo">
-        <em style={{ color: "whitesmoke", fontWeight: "800", fontSize: "20px" }}> Personal <em style={{ color: "#ec6090" }}>Info</em></em>
-        <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><FaRegUser style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.name}</p>
-        <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><MdOutlineMailOutline style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.email}</p>
-        <p style={{ color: "white", marginLeft: "10px", marginTop: "20px", fontSize: "16px" }}><MdOutlinePhone style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.phone} </p>
+
+      <div className="underCover ">
+            <div className="profcontainer" style={{backgroundImage: `url(${this.state.image})`}}>
+            </div>
+
+            <EditProfil
+              name={this.state.name}
+              mail={this.state.email}
+              phone={this.state.phone}
+              onSaveChanges={this.handleSaveChanges}
+              className='editButton '
+            />
+
+            <button onClick={this.logout} type="button" className="logoutButton ">Logout<span> <BiLogOut /></span></button>
+      </div>     
+
+      <div className="dataContainer ">
+
+            <div className="personalinfo ">
+              <em style={{ color: "whitesmoke", fontWeight: "800", fontSize: "20px" }}> Personal <em style={{ color: "#ec6090" }}>Info</em></em>
+              <p style={{ color: "white", fontSize: "16px", marginTop: "20px" }}><FaRegUser style={{marginRight: "20px", fontSize: "22px" }} />{this.state.name}</p>
+              <p style={{ color: "white", fontSize: "16px" }}><MdOutlineMailOutline style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.email}</p>
+              <p style={{ color: "white", fontSize: "16px" }}><MdOutlinePhone style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.phone} </p>
+
+            </div>
+
+            <div className="moviesContainer ">
+              <div style={{ marginBottom: "20px", marginTop: "-80px" }}>
+                <em style={{ color: "whitesmoke", fontWeight: "900", marginLeft: "34%", fontSize: "30px" }} >Movie feed</em>
+              </div>
+              <div className="secondcontainer row">
+                <em className="col-12 text" style={{ color: "whitesmoke", fontWeight: "800", fontSize: "20px", marginTop: "20px" }} >Your Favorite <em style={{ color: "#ec6090" }}>Movies</em></em><br></br>
+                {movielist}
+              </div>
+            </div>
 
       </div>
 
+</div>
 
-
-      <div className="moviescontainer">
-        <div style={{ marginBottom: "15px" }}>
-          <em style={{ color: "whitesmoke", fontWeight: "900", marginLeft: "34%", fontSize: "20px" }} >Movie feed</em>
-        </div>
-        <div className="secondcontainer row">
-          <em className="col-12 text" style={{ color: "whitesmoke", fontWeight: "800", fontSize: "20px", marginTop: "20px" }} >Your Favorite <em style={{ color: "#ec6090" }}>Movies</em></em><br></br>
-          {movielist}
-        </div>
-      </div>
-    </div>
     );
   }
 }
