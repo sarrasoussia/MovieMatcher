@@ -1,0 +1,95 @@
+.mainContainer {
+    display: flex;
+    justify-content: center; 
+    padding: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+}
+
+.leftContainer, .rightContainer {
+    flex: 1; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    /* align-items: center;  */
+}
+
+.leftContainer {
+    max-width: 500px; 
+
+}
+
+.rightContainer {
+    max-width: 800px;
+}
+
+.moviePoster img {
+    width: 100%; 
+    height: auto; 
+}
+
+.movieTitle {
+    height: auto;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; 
+}
+
+.category {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px; 
+    border-radius: 50px;
+}
+
+.moodCategory {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.moodCategory img {
+    max-width: 100%;
+    height: auto;
+    margin: 5px; 
+}
+
+.randomCategory, .webcamCtagory {
+    flex: 1; 
+    
+}
+
+.randomCategory {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.diceImage {
+    border-radius: 30px;
+}
+
+.webcamLink {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.webcamLink img {
+    max-width: 200px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .mainContainer {
+        flex-direction: column; /* Stack containers vertically on smaller screens */
+        align-items: center; /* Center contents vertically */
+    }
+
+    .leftContainer, .rightContainer {
+        width: 100%; /* Take full width when stacked */
+    }
+}
+

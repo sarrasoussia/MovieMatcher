@@ -10,6 +10,7 @@ import Nomatch from "./Nomatch";
 import Login from "./Login";
 import Signup from "./Signup";
 import WebcamPage from "./WebcamPage";
+import Features from "./Features";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/webcam" element={<WebcamPage />} />
+          <Route path="/features" element={<Features />} />
           <Route path="*" element={<Nomatch />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
