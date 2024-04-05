@@ -17,12 +17,16 @@ const Features = () => {
     const [movieDetails] = useState(null);
 
     const sendPostRequest = (emotion) => {
+        console.log(typeof(emotion))
+        JSON.stringify({"emotion":emotion})
+        console.log(typeof(({"emotion":emotion})))
+
         fetch("/recommend_movies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: ( emotion )
+            body: ( {"emotion":emotion} )
         })
         .then(response => {
             if (!response.ok) {
@@ -41,12 +45,6 @@ const Features = () => {
             console.error("Error:", error);
         });
     }
-    
-    // const sendPostRequest = (emotion) => {
-    //     getRandomMovie(emotion);
-    //     console.log(emotion);
-    //     console.log(typeof(emotion));
-    // }
     
     
     // const displayMovieDetails = (movieDetails) => {
@@ -72,9 +70,9 @@ const Features = () => {
                 <div className='category'>
                     <h2 className='moodCategoryTitle'> What's your mood ?</h2>
                     <div className='moodCategory'>
-                        <button onClick={() => sendPostRequest({"emotion":"happy"})}><img src='images/happy.png' alt='happy' /> </button> 
-                        <button onClick={() => sendPostRequest({"emotion":"sad"})}><img src='images/sad.png' alt='sad'/></button>
-                        <button onClick={() => sendPostRequest({"emotion":"neutral"})}><img src='images/angry.png' alt='angry'/></button>
+                        <button onClick={() => sendPostRequest("happy")}><img src='images/happy.png' alt='happy' /> </button> 
+                        <button onClick={() => sendPostRequest("sad")}><img src='images/sad.png' alt='sad'/></button>
+                        <button onClick={() => sendPostRequest("neutral")}><img src='images/angry.png' alt='angry'/></button>
                         {/* <button onClick={() => sendPostRequest({"emotion":"neutral"})}><img src='images/neutral.png' alt='neutral' /></button>
                         <button onClick={() => sendPostRequest({"emotion":"neutral"})}><img src='images/lonely.png' alt='lonely'/></button> */}
                     </div> 
