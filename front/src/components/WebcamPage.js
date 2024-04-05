@@ -21,7 +21,6 @@ const WebcamPage = () => {
         const detectedEmotion = response.data.emotion;
         setEmotion(detectedEmotion);
         
-        // After detecting emotion, request movie recommendation
         const recommendationsResponse = await axios.post('http://localhost:5000/recommend_movies', { emotion: detectedEmotion });
         setMovieDetails(recommendationsResponse.data);
       } else {
@@ -29,7 +28,6 @@ const WebcamPage = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      // setError(error.message);
     }
   };
 

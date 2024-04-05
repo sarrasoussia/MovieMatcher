@@ -22,7 +22,10 @@ class Header extends Component {
                                 <Link className="nav-link text-white" to="/profile">Profile</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-white" to="/webcam">Features</Link>
+                                <Link className="nav-link text-white" to="/webcam">Webcam</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link text-white" to="/features">Features</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link text-white" to="/profile">
