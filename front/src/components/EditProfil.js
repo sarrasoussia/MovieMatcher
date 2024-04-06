@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './EditProfil.css';
 
 function EditProfil(props) {
   const [showModal, setShowModal] = useState(false);
@@ -64,8 +65,8 @@ function EditProfil(props) {
 
   return (
     <div>
-      <button onClick={handleButtonClick} type="button" className="btn btn-outline-secondary" style={{ width: '40%', marginLeft: '28%', marginTop: '8px',borderColor:"red" }}>Edit Profile</button>
 
+      <button onClick={handleButtonClick} type="button" className="editButton btn btn-outline-secondary" >Edit Profile</button>
       {showModal && (
         <div className="modal overlay" tabIndex="-1" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
           <div className="modal-dialog">
@@ -88,7 +89,7 @@ function EditProfil(props) {
                   <input type="text" className="form-control" name="phone" value={phone} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
-                  <label>profile picture:</label>
+                  <label>Profile picture:</label>
                   <input type="file" accept="image/*" className="form-control" id="pictureInput" onChange={convertToBase64} />
                 </div>
               </div>
@@ -96,7 +97,7 @@ function EditProfil(props) {
                 <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>
                   Close
                 </button>
-                <button type="button" className="btn btn-primary" onClick={handleSaveChanges}>
+                <button type="button" className="btn btn-save" onClick={handleSaveChanges}>
                   Save changes
                 </button>
               </div>

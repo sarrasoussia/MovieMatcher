@@ -13,8 +13,8 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
-from bson.json_util import dumps
-from pymongo import MongoClient
+from bson.json_util import dumps 
+from pymongo import MongoClient 
 from datetime import timedelta
 import pandas as pd
 import re
@@ -69,9 +69,9 @@ def signup():
     return jsonify({"msg": "Profil mis à jour avec succès"}), 200
 
 
-# @jwt.expired_token_loader
-# def handle_expired_token_callback(expired_token):
-#     return redirect("/login")
+@jwt.expired_token_loader
+def handle_expired_token_callback(expired_token):
+    return redirect("/login")
 
 
 @app.route("/login", methods=["POST"])
@@ -97,10 +97,11 @@ def editprofil():
     phone = request.json["phone"]
     image = request.json["image"]
     current_user_password = get_jwt_identity()
-    users.update(
+    users.update_one(
         {"password": current_user_password},
         {"$set": {"name": name, "phone": phone, "email": email, "image": image}},
     )
+    
     return jsonify({"msg": "Profile updated successfully"}), 200
 
 

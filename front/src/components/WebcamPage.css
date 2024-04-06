@@ -5,13 +5,12 @@
 }
 
 .leftContainer {
-  width: 50%;
+  width: 30%;
 }
 
 .rightContainer {
-  width: 50%;
-  display: block;
-  justify-content: center;
+  width: 30%;
+
 }
 
 .webcamContainer {
