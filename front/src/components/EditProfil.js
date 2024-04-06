@@ -64,7 +64,7 @@ function EditProfil(props) {
 
   return (
     <div>
-      <button onClick={handleButtonClick} type="button" className="btn btn-outline-secondary" style={{ width: '40%', marginLeft: '28%', marginTop: '8px' }}>Edit Profile</button>
+      <button onClick={handleButtonClick} type="button" className="btn btn-outline-secondary" style={{ width: '40%', marginLeft: '28%', marginTop: '8px',borderColor:"red" }}>Edit Profile</button>
 
       {showModal && (
         <div className="modal overlay" tabIndex="-1" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
