@@ -79,7 +79,7 @@ class Profile extends Component {
       return <Navigate to="/login" />;
   }
     return (
-  <div className="mainContainer">
+  <div className="mainContainerProfil" style={{background: "linear-gradient(to top, rgb(4, 4, 4), rgba(36, 34,34,0.937))"}}>
 
       <div className="cover" style={{backgroundImage: `url(images/coverimg.png)`}}>
         <p className="welcome text-center" style={{ fontFamily: "cinematic"}}>
@@ -98,11 +98,9 @@ class Profile extends Component {
               mail={this.state.email}
               phone={this.state.phone}
               onSaveChanges={this.handleSaveChanges}
-              className='editButton '
             />
 
-            <button onClick={this.logout} type="button" className="logoutButton ">Logout<span> <BiLogOut /></span></button>
-      </div>     
+      <button onClick={this.logout} type="button" className="btn btn-outline-secondary" style={{width:"150px"}}>Logout<span><BiLogOut style={{fontSize: "24px",marginLeft:"8px"}} /></span></button>      </div>     
 
       <div className="dataContainer ">
 
@@ -111,6 +109,9 @@ class Profile extends Component {
               <p style={{ color: "white", fontSize: "16px", marginTop: "20px" }}><FaRegUser style={{marginRight: "20px", fontSize: "22px" }} />{this.state.name}</p>
               <p style={{ color: "white", fontSize: "16px" }}><MdOutlineMailOutline style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.email}</p>
               <p style={{ color: "white", fontSize: "16px" }}><MdOutlinePhone style={{ marginRight: "20px", fontSize: "22px" }} />{this.state.phone} </p>
+
+
+      
 
             </div>
 

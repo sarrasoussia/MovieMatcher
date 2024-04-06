@@ -4,6 +4,17 @@
     margin-bottom: 20px;
     padding-left: 20px;
     padding-right: 10px;
+    height: 400px;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.card::-webkit-scrollbar {
+    width: 8px;
+}
+  
+.card::-webkit-scrollbar-thumb {
+    background-color:  rgb(66, 62, 62);
 }
 
 .img{
@@ -16,5 +27,5 @@
     height: 110px;
     display: contents;
     background-color: rgb(42, 39, 39);
-
+ 
 }

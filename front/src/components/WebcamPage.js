@@ -86,7 +86,6 @@ const WebcamPage = () => {
         <p>Short Summary: {movieDetails['Short Summary']}</p>
         <p>Runtime: {movieDetails.Runtime}</p>
         <p>Rating: {movieDetails.Rating}</p>
-        {/* <img src={movieDetails['Movie Poster']} alt={movieDetails.Title} /> */}
         <p>Add to favorites: <button onClick={isFavorite ? RemoveFromFavorites : favoris} type="button" className="btn btn-outline-secondary" style={{ borderColor:"transparent",transform:"translate(0px,-3px)" }}>
            {isFavorite ? <MdOutlineFavorite style={{fontSize: "32px"}}/> : <GrFavorite style={{fontSize: "30px"}}/>}</button></p>                       
       </div>

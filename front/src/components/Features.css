@@ -12,17 +12,16 @@
     padding: 20px;
     display: flex;
     flex-direction: column; 
-    height: 800px;
+    height: 600px;
 }
 
 .leftContainer {
     max-width: 500px; 
-  
 }
 
 .rightContainer {
     max-width: 800px;
-    margin-top: -50px;
+    margin-top: 20px;
 }
 
 .category {
