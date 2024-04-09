@@ -1,4 +1,5 @@
 # pip install flask
+#pip install pip cors
 # pip install flask-cross
 # pip install deepface
 # pip install opencv-python

@@ -21,7 +21,7 @@ class Services extends Component {
                                     img="https://github.com/kishan0725/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/blob/master/static/image.jpg?raw=true"
                                     title="Movie recommendations"
                                     description="This Service will provide you only movies due to categeory selection , no need for authentification."
-                                    buttonText="Try Service"
+                                    path="/moviegenerator"
                                 />
                             </div>
                             <div className="col">
@@ -29,7 +29,7 @@ class Services extends Component {
                                     img="https://i.pinimg.com/564x/2d/d4/24/2dd4243ddcf48e4144eb7f115d986a0d.jpg"
                                     title="Sentiment Movie Generator"
                                     description="This Service will analyze your mood and suggest you some movies to chill , authentification needed."
-                                    buttonText="Try Service"
+                                    path="/webcam"
                                 />
                             </div>
                         </div>

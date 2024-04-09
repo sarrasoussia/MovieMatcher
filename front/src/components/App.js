@@ -11,6 +11,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import WebcamPage from "./WebcamPage";
 import Features from "./Features";
+import MovieGenerator from "./MovieGenerator";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="*" element={<Nomatch />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/moviegenerator" element={<MovieGenerator />} />
         </Routes>
         <FooterWrapper />
       </div>
