@@ -46,7 +46,7 @@ class MovieGenerator extends Component {
 
     return (
       <div className="py-5">
-        <div className="container-fluid card">
+        <div className="container-fluid card-gen">
           <h1 className="text-white text-center display-1 py-1" style={{ fontFamily: "cinematic" }}>
             Select <span style={{ color: "red" }}>Category</span>
           </h1>
