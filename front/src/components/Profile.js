@@ -53,10 +53,11 @@ class Profile extends Component {
       image: updatedInfo.image
     });
   };
+  
   logout = () => {
     sessionStorage.removeItem("token");
     this.setState({ redirect: true });
-}
+  }
 
   mapping(x) {
     const movies = x.map((movie) => (

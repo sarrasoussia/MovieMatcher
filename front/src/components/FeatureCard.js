@@ -52,7 +52,7 @@ const FeatureCard = (props) => {
     }
 
     return (
-        <div className="card element-body">
+        <div className="card">
             <div className="card-header" >
                 <img className='imgg' alt="" src="images/favorispic3.png"/>
             </div>
@@ -65,7 +65,7 @@ const FeatureCard = (props) => {
                     <span style={{color:"#abece9",listStyleType:"none",paddingRight:"10px"}}>Rate:</span>
                     <span style={{color:"white",listStyleType:"none"}}>{props.rate}<FaStar style={{ color: "#ede607",transform:"translate(0px,-3px)",marginLeft:"7px"}}/> </span><br></br>
                     <p style={{color:"#abece9",fontWeight:"500",paddingRight:"10px"}}>
-                        Remove of favorites: 
+                        Add to favorites: 
                         <button onClick={isFavorite ? RemoveFromFavorites : favoris} type="button" className="btn btn-outline-secondary" style={{ borderColor:"transparent",transform:"translate(0px,-3px)" }}>
                             {isFavorite ? <MdOutlineFavorite style={{fontSize: "25px"}}/> : <GrFavorite style={{fontSize: "25px"}}/>}
                         </button>
