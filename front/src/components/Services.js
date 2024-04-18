@@ -26,8 +26,7 @@ class Services extends Component {
                             </div>
                             <div className="col">
                                 <Service
-                                    img="https://i.pinimg.com/564x/2d/d4/24/2dd4243ddcf48e4144eb7f115d986a0d.jpg"
-                                    title="Sentiment Movie Generator"
+                                    img="https://github.com/kishan0725/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/blob/master/static/image.jpg?raw=true"                                    title="Sentiment Movie Generator"
                                     description="This Service will analyze your mood and suggest you some movies to chill , authentification needed."
                                     path="/webcam"
                                 />

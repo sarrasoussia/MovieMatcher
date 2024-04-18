@@ -10,7 +10,7 @@ class Slider extends Component {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
-                  src="https://i.pinimg.com/736x/fa/9a/8a/fa9a8a55c1b85548186c05b4b45e503f.jpg"
+                  src="images/poster1.jpg"
                   className="d-block w-100"
                   alt="Slide 1"
                   style={{ height: "30rem" }}
@@ -18,7 +18,7 @@ class Slider extends Component {
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://i.pinimg.com/736x/9f/cb/3f/9fcb3f6daf711d6d0b93ccb9ebd0cdef.jpg"
+                  src="images/poster2.jpg"
                   className="d-block w-100"
                   alt="Slide 2"
                   style={{ height: "30em" }}
@@ -26,7 +26,7 @@ class Slider extends Component {
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://i.pinimg.com/736x/f2/1c/8d/f21c8d053313637bd0fe7bc83312b3b1.jpg"
+                  src="images/poster3.jpg"
                   className="d-block w-100"
                   alt="Slide 3"
                   style={{ height: "30rem" }}
