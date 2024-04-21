@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Services from './Services'
 import Slider from "./Slider";
 import Goal from "./goal";
-import './home.css'
+import './Home.css'
 class Home extends Component{
     render(){
         return(

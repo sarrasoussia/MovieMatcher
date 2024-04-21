@@ -11,7 +11,7 @@ import Signup from "./Signup";
 import WebcamPage from "./WebcamPage";
 import Features from "./Features";
 import MovieGenerator from "./MovieGenerator";
-import Home from "./home";
+import Home from "./Home";
 import EnterHeader from "./EnterHeader";
 const App = () => {
   return (

@@ -52,7 +52,7 @@ const FeatureCard = (props) => {
     }
 
     return (
-        <div className="card element-body">
+        <div className="">
             <div className="card-header" >
                 <img className='imgg' alt="" src="images/favorispic3.png"/>
             </div>
