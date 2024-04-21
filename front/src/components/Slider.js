@@ -8,30 +8,25 @@ class Slider extends Component {
         <div style={{ backgroundColor: "black", borderRadius: "20px" }}>
           <div id="carouselExampleFade" className="carousel slide carousel-fade">
             <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  src="https://i.pinimg.com/736x/fa/9a/8a/fa9a8a55c1b85548186c05b4b45e503f.jpg"
-                  className="d-block w-100"
-                  alt="Slide 1"
-                  style={{ height: "30rem" }}
-                />
+            <div className="carousel-item active" style={{ backgroundImage: "url('images/poster1.jpg')", backgroundSize: "cover", height: "30rem" }}>
+              {/* <div style={{backgroundColor:"rgba(0, 0, 0, 0.6)",width:"18%",marginLeft:"40%",marginTop:"5px",borderRadius:"20px",height:"15%"}}>
+               <h1 className=" text-white text-center display-1 py-3" style={{fontFamily: "cinematic",fontSize:"47px",marginTop:"-18px"}}> Our <span style={{color:"red"}}> Features !</span> </h1>
+              </div> */}
+
+            </div>
+
+            <div className="carousel-item" style={{ backgroundImage: "url('images/poster2.jpg')", backgroundSize: "cover", height: "30em" }}>
+            <div style={{backgroundColor:"rgba(0, 0, 0, 0.6)",width:"18%",marginLeft:"40%",marginTop:"5px",borderRadius:"20px",height:"15%"}}>
+               <h1 className=" text-white text-center display-1 py-3" style={{fontFamily: "cinematic",fontSize:"47px",marginTop:"-18px"}}> Our <span style={{color:"red"}}> Features !</span> </h1>
               </div>
-              <div className="carousel-item">
-                <img
-                  src="https://i.pinimg.com/736x/9f/cb/3f/9fcb3f6daf711d6d0b93ccb9ebd0cdef.jpg"
-                  className="d-block w-100"
-                  alt="Slide 2"
-                  style={{ height: "30em" }}
-                />
+            </div>
+
+            <div className="carousel-item" style={{ backgroundImage: "url('images/poster3.jpg')", backgroundSize: "cover", height: "30rem" }}>
+            <div style={{backgroundColor:"rgba(0, 0, 0, 0.6)",width:"18%",marginLeft:"40%",marginTop:"5px",borderRadius:"20px",height:"15%"}}>
+               <h1 className=" text-white text-center display-1 py-3" style={{fontFamily: "cinematic",fontSize:"47px",marginTop:"-18px"}}> Our <span style={{color:"red"}}> Features !</span> </h1>
               </div>
-              <div className="carousel-item">
-                <img
-                  src="https://i.pinimg.com/736x/f2/1c/8d/f21c8d053313637bd0fe7bc83312b3b1.jpg"
-                  className="d-block w-100"
-                  alt="Slide 3"
-                  style={{ height: "30rem" }}
-                />
-              </div>
+            </div>
+
             </div>
             <button
               className="carousel-control-prev"

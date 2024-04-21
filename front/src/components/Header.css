@@ -6,12 +6,11 @@
     top: 0; 
     width: 100%; 
     z-index: 1000; 
-    margin-top: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
   }
-  
-.collapse{
-  margin-left: 50%;
-} 
+.itemstyle{
+  margin-left: 57%;
+}
 .nav-item{
   margin-left: 20px;
 } 

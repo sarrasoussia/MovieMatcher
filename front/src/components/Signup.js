@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-
+import './Signup.css';
 function Signup() {
     const [image, setImage] = useState("");
     const [name, setName] = useState("");
@@ -56,13 +56,12 @@ function Signup() {
     }
 
     return (
-        <div className="py-5">
-            <div className="container-fluid card py-3" style={{ width: "65%", marginTop: "100px", marginBottom: "80px" }}>
-                <h1 className="text-white text-center display-1 py-1" style={{ fontFamily: "cinematic" }}>
-                    Créer un <span style={{ color: "red" }}>Compte</span>
-                </h1>
-                <div className="row">
-                    <div className="col-md-10 mx-auto">
+            <div className="py-5" style={{background: "linear-gradient(to top, rgba(255,255,255,0), rgba(0, 0, 0, 0.2))"}}>
+                <p className="text-white text-center display-1 py-2" style={{ fontFamily: "cinematic",fontSize:"65px", transform:"translate(0px,45px)",marginBottom:"40px"}}> Create Your <span style={{ color: "rgba(186, 208, 85, 0.818)" }}>Account</span></p>
+
+                <div className="row" style={{  paddingTop: "60px",paddingBottom: "120px", borderBottom: "2.5px solid black", width: "100%" ,transform:"translate(14px,0px)"}}>
+                    <img className="col-3" src="/images/login1.png" alt="" style={{marginLeft:"40px",transform:"translate(150px,-75px)"}}/>
+                    <p className="text-white text-center py-5 col-6" style={{marginLeft:"140px"}}>
                         <form>
                             <div className="mb-3">
                                 <input type="text" value={name} className="form-control" id="nameInput" placeholder="Nom" onChange={(e) => setName(e.target.value)} />
@@ -80,15 +79,14 @@ function Signup() {
                                 <input type="password" value={password} className="form-control " id="passwordinput" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                             </div>
                             <div className="text-center">
-                                <button onClick={handleCreate} type="button" className="btn btn-danger w-100 text-white">Créer un compte</button>
+                                <button onClick={handleCreate} type="button" className="btn  btn-outline-secondary w-100 text-white bouuton">Create</button>
                             </div>
                             
                             <br />
-                        </form>
-                    </div>
+                        </form>                   
+                    </p>
                 </div>
             </div>
-        </div>
     );
 }
 

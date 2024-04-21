@@ -1,0 +1,14 @@
+.goalstyle{
+    width: 70%;
+    color: rgb(239, 236, 231);
+    border-radius: 20px;
+    background: linear-gradient(to top, rgba(38, 36, 36, 0.6),rgba(30, 28, 28, 0.8), rgba(30, 28, 28, 0.8));
+    padding: 17px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    height: 90%;
+}
+h5{
+    margin-bottom: 13px;
+    margin-left: 7%;
+    color: rgb(203, 169, 169);
+}

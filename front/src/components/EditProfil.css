@@ -77,4 +77,6 @@
 .editButton {
   transform: translate(-500px,380px);
   width: 200px;
+  background-color: rgba(186, 208, 85, 0.818);
+  font-weight: 600;
 }

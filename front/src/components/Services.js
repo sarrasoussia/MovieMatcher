@@ -2,38 +2,39 @@ import { Component } from "react";
 import Service from './Service'
 
 class Services extends Component {
+    path(){
+        const access_token = sessionStorage.getItem("token");
+        if (access_token && access_token !== "") {
+            return "/features";           
+        }else{
+            return "/login";
+        }
+    }
     render() {
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col md-6">
-                        <p className="text-white text-center py-5">
-                            <br />
-                            <br />
-                            Movie Matcher provides users with the opportunity to generate personalized movie recommendations through two distinct methods. Firstly, it analyzes the user's mood, utilizing advanced algorithms to interpret emotions and suggest films that align with their current emotional state. Whether you're feeling upbeat, contemplative, or in need of a good laugh, Movie Matcher tailors its suggestions to suit your mood perfectly. Additionally, for those who prefer a more straightforward approach, Movie Matcher offers category-based recommendations. Users can easily navigate through genres, themes, and preferences to discover movies that cater to their specific tastes and interests. Whether you're seeking an adrenaline-pumping action flick, a heartwarming romance, or a spine-tingling thriller, Movie Matcher ensures that you'll find the perfect cinematic experience for any occasion.
-                        </p>
-                    </div>
-
-                    <div className="col md-6">
                         <div className="row">
                             <div className="col">
                                 <Service
-                                    img="https://github.com/kishan0725/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/blob/master/static/image.jpg?raw=true"
-                                    title="Movie recommendations"
+                                    title="Category CineScope"
                                     description="This Service will provide you only movies due to categeory selection , no need for authentification."
-                                    buttonText="Try Service"
+                                    path="/moviegenerator"
                                 />
                             </div>
                             <div className="col">
                                 <Service
-                                    img="https://i.pinimg.com/564x/2d/d4/24/2dd4243ddcf48e4144eb7f115d986a0d.jpg"
-                                    title="Sentiment Movie Generator"
+                                title="Moodflix Match"
                                     description="This Service will analyze your mood and suggest you some movies to chill , authentification needed."
-                                    buttonText="Try Service"
+                                    path={this.path()}
                                 />
                             </div>
                         </div>
                     </div>
+                    <img className="col-6" src="images/mmmmmmmm.png" alt="" style={{width:"20px",height:"280px",marginTop:"70px"}}/>
+                    {/* <h1 className=" text-white text-center display-1 py-3 col-6" style={{fontFamily: "cinematic"}}> Our <span style={{color:"red"}}> Services</span></h1> */}
+
                 </div>
             </div>
         );

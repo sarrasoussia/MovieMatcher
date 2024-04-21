@@ -52,11 +52,11 @@ const FeatureCard = (props) => {
     }
 
     return (
-        <div className="card">
+        <div className="card element-body">
             <div className="card-header" >
                 <img className='imgg' alt="" src="images/favorispic3.png"/>
             </div>
-            <div className="card-body">
+            <div className="card-body-movie">
                 <p>
                     <span style={{color:"#abece9" , fontWeight:"700",paddingRight:"10px"}} >Title:</span>
                     <span style={{color:"white" , fontWeight:"700"}}>{props.title}</span><br></br>

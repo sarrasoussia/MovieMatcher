@@ -1,8 +1,7 @@
-.card{
-    background: linear-gradient(to top, rgba(255,255,255,0.7), rgba(255,255,255,0));
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    width: 55rem;
-    margin-top: 2rem;
+.bouton{
+    border-radius: 13px;
+    font-size: 17px;
+    font-weight: 550;
+    background-color: rgba(116, 229, 244, 0.714);
 }
 

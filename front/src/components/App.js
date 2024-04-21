@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
-import Home from './Home';
 import About from './About';
 import Contact from './Contact'
 import Profile from './Profile'
@@ -11,14 +10,16 @@ import Login from "./Login";
 import Signup from "./Signup";
 import WebcamPage from "./WebcamPage";
 import Features from "./Features";
-
+import MovieGenerator from "./MovieGenerator";
+import Home from "./home";
+import EnterHeader from "./EnterHeader";
 const App = () => {
   return (
     <Router>
       <div>
-        <Header />
+        <HeaderWrapper/>
         <Routes>
-          <Route path="" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
@@ -27,12 +28,22 @@ const App = () => {
           <Route path="*" element={<Nomatch />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/moviegenerator" element={<MovieGenerator />} />
         </Routes>
         <FooterWrapper />
       </div>
     </Router>
   );
 };
+
+const HeaderWrapper = () => {
+  const access_token = sessionStorage.getItem("token");
+  if (access_token && access_token !== "") {
+    return <Header />;
+  } else {
+    return <EnterHeader />;
+  }
+}
 
 const FooterWrapper = () => {
   const location = useLocation();
