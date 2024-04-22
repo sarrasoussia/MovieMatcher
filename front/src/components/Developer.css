@@ -15,6 +15,7 @@
     height: 480px;
     max-height: 480px;
     overflow-x: hidden;
+    border-radius: 20px;
 }
 .image{
     transform: translate(-18px,0px);
