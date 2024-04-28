@@ -169,22 +169,27 @@ def user_info():
 @cross_origin()
 def detect_emotion():
     try:
-
         image_data = request.json["image"]
-
+        
         img_data = base64.b64decode(image_data.split(",")[1])
         nparr = np.frombuffer(img_data, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
         result = DeepFace.analyze(img, actions=["emotion"])
-        emotion = result[0]["dominant_emotion"]
+        detected_emotion = result[0]["dominant_emotion"]
+
+        if detected_emotion in ['happy', 'neutral', 'sad']:
+            emotion = detected_emotion
+        else:
+            emotion = 'neutral'
+
         return jsonify({"emotion": emotion}), 200
+    
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
-df = pd.read_csv("cleanedMovies.csv")
-
+df = pd.read_csv("movies_with_predictions.csv")
 
 @app.route("/recommend_movies", methods=["POST"])
 @cross_origin()
@@ -198,27 +203,28 @@ def recommend_movies():
         emotion_category_mapping = {
             "happy": "happy",
             "sad": "sad",
+            "neutral": "neutral"
         }
 
         emotion_category = emotion_category_mapping.get(detected_emotion, "neutral")
 
-        filtered_movies = df[df["sentiment"] == emotion_category]
+        filtered_movies = df[df["Predicted_Sentiment_Vader"] == emotion_category]
 
         if filtered_movies.empty:
             return (
-                jsonify({"error": f"No movies found for {emotion_category} emotion"}),
+                jsonify({"error": f"No movies found for {detected_emotion} emotion"}),
                 404,
             )
 
-        # Select a random movie from the filtered list
         recommended_movie = filtered_movies.sample(n=1)
 
-        movie_details = recommended_movie.to_dict(orient="records")[0]
-
+        movie_details = recommended_movie[['Year', 'Summary', 'Short Summary', 'Runtime', 'Rating']].to_dict(orient="records")[0]
+        
         return jsonify(movie_details), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 
 if __name__ == "__main__":
