@@ -1,5 +1,5 @@
 # pip install flask
-#pip install pip cors
+# pip install pip cors
 # pip install flask-cross
 # pip install deepface
 # pip install opencv-python
@@ -14,8 +14,8 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
-from bson.json_util import dumps 
-from pymongo import MongoClient 
+from bson.json_util import dumps
+from pymongo import MongoClient
 from datetime import timedelta
 import pandas as pd
 import re
@@ -37,6 +37,8 @@ def signup():
     password = request.json["password"]
     image = request.json["image"]
     favorite_movies = []
+    if not email or not name or not phone or not password or not image:
+        return jsonify({"msg": "Tous les champs sont requis."}), 400
 
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
         return jsonify({"msg": "Format d'email invalide"}), 401
@@ -102,7 +104,7 @@ def editprofil():
         {"password": current_user_password},
         {"$set": {"name": name, "phone": phone, "email": email, "image": image}},
     )
-    
+
     return jsonify({"msg": "Profile updated successfully"}), 200
 
 
@@ -169,7 +171,6 @@ def user_info():
 @cross_origin()
 def detect_emotion():
     try:
-
         image_data = request.json["image"]
 
         img_data = base64.b64decode(image_data.split(",")[1])
@@ -177,13 +178,20 @@ def detect_emotion():
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
         result = DeepFace.analyze(img, actions=["emotion"])
-        emotion = result[0]["dominant_emotion"]
+        detected_emotion = result[0]["dominant_emotion"]
+
+        if detected_emotion in ["happy", "neutral", "sad"]:
+            emotion = detected_emotion
+        else:
+            emotion = "neutral"
+
         return jsonify({"emotion": emotion}), 200
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
-df = pd.read_csv("cleanedMovies.csv")
+df = pd.read_csv("movies_with_predictions.csv")
 
 
 @app.route("/recommend_movies", methods=["POST"])
@@ -198,22 +206,24 @@ def recommend_movies():
         emotion_category_mapping = {
             "happy": "happy",
             "sad": "sad",
+            "neutral": "neutral",
         }
 
         emotion_category = emotion_category_mapping.get(detected_emotion, "neutral")
 
-        filtered_movies = df[df["sentiment"] == emotion_category]
+        filtered_movies = df[df["Predicted_Sentiment_Vader"] == emotion_category]
 
         if filtered_movies.empty:
             return (
-                jsonify({"error": f"No movies found for {emotion_category} emotion"}),
+                jsonify({"error": f"No movies found for {detected_emotion} emotion"}),
                 404,
             )
 
-        # Select a random movie from the filtered list
         recommended_movie = filtered_movies.sample(n=1)
 
-        movie_details = recommended_movie.to_dict(orient="records")[0]
+        movie_details = recommended_movie[["Title", "Rating", "Short Summary"]].to_dict(
+            orient="records"
+        )[0]
 
         return jsonify(movie_details), 200
 

@@ -79,7 +79,7 @@ function Profile() {
   return (
     <div className="mainContainerProfil" style={{ background: "linear-gradient(to top, rgb(4, 4, 4), rgba(36, 34,34,0.937))" }}>
       <div className="cover" style={{ backgroundImage: `url(images/coverimg.png)` }}>
-        <p className="welcome text-center" style={{ fontFamily: "cinematic" }}>
+        <p className="welcome text-center" style={{ fontFamily: "cinematic"}}>
           <span style={{ color: "rgb(97, 75, 49)" }}> Welcome to your profile </span>
           <span style={{ color: "rgb(195, 58, 58)" }}>{userData.name}</span>
         </p>
