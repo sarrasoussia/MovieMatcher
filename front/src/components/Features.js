@@ -58,8 +58,8 @@ const Features = () => {
                         <button className='moodImage' onClick={() => sendPostRequest("happy")}><img src='images/happy.png' alt='happy' /> </button> 
                         <button className='moodImage' onClick={() => sendPostRequest("neutral")}><img src='images/neutral.png' alt='neutral' /></button>
                         <button className='moodImage' onClick={() => sendPostRequest("sad")}><img src='images/sad.png' alt='sad'/></button>
-                        {/* <button className='moodImage' onClick={() => sendPostRequest("neutral")}><img src='images/angry.png' alt='angry'/></button> */}
-                        {/* <button className='moodImage' onClick={() => sendPostRequest("neutral")}><img src='images/lonely.png' alt='lonely'/></button>  */}
+                        <button className='moodImage' onClick={() => sendPostRequest("neutral")}><img src='images/angry.png' alt='angry'/></button>
+                        <button className='moodImage' onClick={() => sendPostRequest("neutral")}><img src='images/lonely.png' alt='lonely'/></button> 
                     </div> 
                 </div>
 

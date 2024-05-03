@@ -12,6 +12,7 @@ class Home extends Component{
                     {/* <h1 className=" text-white text-center display-1 py-3" style={{fontFamily: "cinematic",fontSize:"60px"}}> Check <span style={{color:"red"}}> Features !</span> </h1> */}
                     <Slider />
                 </div>
+
                 <div className="row" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)", paddingTop: "40px",paddingBottom: "40px", borderBottom: "2.5px solid black", width: "100%" ,transform:"translate(14px,0px)"}}>
                     <img className="col-4" src="images/cccc.png" alt=""/>
                     <p className="text-white text-center py-5 col-6" style={{marginLeft:"140px"}}>
@@ -28,11 +29,12 @@ class Home extends Component{
                         </button>
                     </p>
                 </div>
+
                 <div style={{ backgroundColor: "rgba(0, 0, 0, 0.2)", paddingTop: "40px",paddingBottom: "40px", borderBottom: "2.5px solid black", width: "100%" }}>
-                {/* <h1 className=" text-white text-center display-1 py-3" style={{fontFamily: "cinematic"}}> Our <span style={{color:"red"}}> Services</span></h1> */}
                 <Services />
                 <br/>
                 </div>
+                
                 <div className="row" style={{ background: "linear-gradient(to top, rgba(255,255,255,0), rgba(0, 0, 0, 0.2))",paddingLeft:"8%" ,paddingTop: "28px",paddingBottom: "28px", borderBottom: "2.5px solid black", width: "100%" ,textAlign:"center"}}>
                     <em className="col-12" style={{ color: "whitesmoke", fontWeight: "800", fontSize: "25px",marginBottom:"20px",transform:"translate(-60px,0px)"}}>Our <em style={{ color: "rgb(227, 144, 144)" }}>Goals</em></em><br></br>
                     <div className="col-4">

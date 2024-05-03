@@ -5,3 +5,17 @@
     background-color: rgba(116, 229, 244, 0.714);
 }
 
+.content {
+    padding-left: 200px;
+}
+
+.img-container {
+    width: 400px; 
+  }
+  
+  .img-container img {
+    width: 100%; 
+    height: auto; 
+    margin-top: 80px;
+  }
+  

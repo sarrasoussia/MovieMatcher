@@ -24,7 +24,7 @@ const FeatureCard = (props) => {
                 alert('remove from favorites failed');
             }
         } catch (error) {
-            console.error('Error fetching user info:', error);
+            console.error('Error remove from fav:', error);
         }
     }
 
@@ -47,7 +47,7 @@ const FeatureCard = (props) => {
                 alert('add to favorites failed');
             }
         } catch (error) {
-            console.error('Error fetching user info:', error);
+            console.error('Error adding to fav:', error);
         }
     }
 

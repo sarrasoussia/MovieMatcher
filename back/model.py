@@ -218,7 +218,7 @@ def recommend_movies():
 
         recommended_movie = filtered_movies.sample(n=1)
 
-        movie_details = recommended_movie[['Year', 'Summary', 'Short Summary', 'Runtime', 'Rating']].to_dict(orient="records")[0]
+        movie_details = recommended_movie[['Title','Rating', 'Short Summary']].to_dict(orient="records")[0]
         
         return jsonify(movie_details), 200
 

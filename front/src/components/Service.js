@@ -6,7 +6,7 @@ import "./Service.css"
 class Service extends Component{
     render(){
         return(
-            <div className="card">
+            <div className="card cardService">
                 <div className="card-header" >
                 <img 
                 src="images/serviceimg.png"
