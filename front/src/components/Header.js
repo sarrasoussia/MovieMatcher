@@ -50,6 +50,9 @@ function Header() {
                             <Link className="nav-link text-white" to="/about">About Us</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link text-white" to="/moviegenerator">Featured Movies</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link text-white" to="/contact">Contact Us</Link>
                         </li>
                         <li className="nav-item">

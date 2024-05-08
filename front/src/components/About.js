@@ -21,7 +21,11 @@ class About extends Component{
                 <div className="row" style={{  paddingTop: "40px",paddingBottom: "40px", borderBottom: "2.5px solid black", width: "100%" ,transform:"translate(14px,0px)"}}>
                     <img className="col-3" src="images/a1.png" alt="" style={{marginLeft:"40px",transform:"translate(50px,-25px)"}}/>
                     <p className="text-white text-center py-5 col-6" style={{marginLeft:"140px"}}>
-                        <p style={{fontWeight: "440"}}>Movie Matcher empowers users with a dual-pronged approach to discover their next cinematic gem. Firstly, it taps into the user's emotional landscape, employing cutting-edge algorithms to decode their mood and deliver tailored movie recommendations. Whether it's a craving for levity, a contemplative mood, or an urge for excitement, Movie Matcher serves up suggestions that perfectly match the user's emotional palette. Additionally, for those who prefer a more structured exploration, Movie Matcher offers a categorized journey through genres, themes, and preferences. From pulse-pounding action to heartwarming romance and nerve-wracking suspense, Movie Matcher ensures that every movie seeker finds their perfect match, no matter the occasion or preference.</p>
+                        <p style={{fontWeight: "440"}}>
+                        This dilemma is particularly relevant in the realm of entertainment, where the sheer volume of movies, TV shows, and streaming platforms can leave consumers feeling perplexed about what to watch. In response to this challenge, innovative solutions are emerging to help users navigate the sea of choices and find content that resonates with their preferences and moods.
+                        <p></p>
+                        One such solution is the development of movie mood matcher web applications, which leverage advanced technologies to assist users in discovering films that align with their emotional state. By integrating features such as emotion detection and sentiment analysis, these applications aim to streamline the selection process and enhance user satisfaction in the ever-expanding landscape of entertainment options.
+                        </p>
                     </p>
                 </div>
                 <div style={{ borderBottom: "2.5px solid black", width: "100%" }}>
@@ -45,8 +49,8 @@ class About extends Component{
                         </div>
                         <div className="col-md-4 ">
                             <Developer 
-                                image="images/ala.png"                                
-                                name="Bhiri Ghoul Ala"
+                                image="images/ala5.png"                                
+                                name="Ghoul Bhiri Ala"
                                 description="Responsible for ai developement"
                             />
                         </div>

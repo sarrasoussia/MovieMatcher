@@ -212,9 +212,11 @@ def recommend_movies():
         emotion_category = emotion_category_mapping.get(detected_emotion, "neutral")
 
         filtered_movies = df[df["Predicted_Sentiment_Vader"] == emotion_category]
+        filtered_movies = df[df["Predicted_Sentiment_Vader"] == emotion_category]
 
         if filtered_movies.empty:
             return (
+                jsonify({"error": f"No movies found for {detected_emotion} emotion"}),
                 jsonify({"error": f"No movies found for {detected_emotion} emotion"}),
                 404,
             )

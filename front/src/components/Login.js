@@ -49,7 +49,7 @@ function Login() {
             <div className="py-5" style={{background: "linear-gradient(to top, rgba(255,255,255,0), rgba(0, 0, 0, 0.2))"}}>
                 <p className="text-white text-center display-1 py-2" style={{ fontFamily: "cinematic",fontSize:"65px", transform:"translate(0px,45px)",marginBottom:"40px"}}> Welcome <span style={{ color: "rgba(186, 208, 85, 0.818)" }}>Back</span></p>
 
-                <div className="row" style={{  paddingTop: "60px",paddingBottom: "120px", borderBottom: "2.5px solid black", width: "100%" ,transform:"translate(14px,0px)"}}>
+                <div className="row" style={{  paddingTop: "60px",paddingBottom: "164px", borderBottom: "2.5px solid black", width: "100%" ,transform:"translate(14px,0px)"}}>
                     <img className="col-3" src="/images/login1.png" alt="" style={{marginLeft:"40px",transform:"translate(150px,-75px)"}}/>
                     <p className="text-white text-center py-5 col-6" style={{marginLeft:"140px"}}>
                         <form>
